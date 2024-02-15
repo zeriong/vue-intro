@@ -10,6 +10,7 @@ export default new VueRouter({
             path: '/',
             redirect: '/login'
         },
+
         {
             path: '/login',
             // 함수형태로 컴포넌트를 지정하여 코드스플리팅 사용
@@ -18,6 +19,12 @@ export default new VueRouter({
         {
             path: '/signup',
             component: () => import('@/views/SignupPage.vue'),
+        },
+
+        // fallback router 처리
+        {
+            path: '*',
+            component: () => import('@/views/NotFoundPage.vue'),
         },
     ],
 });
