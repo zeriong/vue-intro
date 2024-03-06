@@ -31,8 +31,19 @@ export default {
   },
   methods: {
     submitForm() {
+      const users = JSON.parse(localStorage.getItem('users'));
+
+      if (users.some(userData => userData.username === this.username)) {
+        return alert('이미 가입된 회원입니다.');
+      }
       setTimeout(() => {
-        localStorage.setItem('dwt','sdf')
+        users.push({
+          username: this.username,
+          password: this.password,
+          nickname: this.nickname,
+        });
+        localStorage.setItem('users', JSON.stringify(users));
+        console.log("이건 뭘까나",localStorage.getItem('users'));
         this.resetForm();
       }, 1000);
     },
@@ -41,6 +52,11 @@ export default {
       this.nickname = '';
       this.username = '';
       this.password = '';
+    }
+  },
+  created() {
+    if (!localStorage.getItem('users')) {
+      localStorage.setItem('users', JSON.stringify([]));
     }
   }
 };
