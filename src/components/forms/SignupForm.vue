@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -35,17 +36,20 @@ export default {
 
       if (users.some(userData => userData.username === this.username)) {
         return alert('이미 가입된 회원입니다.');
+      } else {
+        setTimeout(() => {
+          users.push({
+            username: this.username,
+            password: this.password,
+            nickname: this.nickname,
+          });
+          localStorage.setItem('users', JSON.stringify(users));
+          console.log("이건 뭘까나",localStorage.getItem('users'));
+          this.resetForm();
+          alert('회원가입이 되었습니다!');
+          this.$router.push("/");
+        }, 1000);
       }
-      setTimeout(() => {
-        users.push({
-          username: this.username,
-          password: this.password,
-          nickname: this.nickname,
-        });
-        localStorage.setItem('users', JSON.stringify(users));
-        console.log("이건 뭘까나",localStorage.getItem('users'));
-        this.resetForm();
-      }, 1000);
     },
 
     resetForm() {
