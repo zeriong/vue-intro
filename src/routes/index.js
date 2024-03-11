@@ -19,17 +19,21 @@ export default new VueRouter({
         {
             path: '/login',
             // 함수형태로 컴포넌트를 지정하여 코드스플리팅 사용
-            component: () => import('../views/LoginPage.vue'),
+            component: () => import('../modules/intro/views/LoginPage.vue'),
         },
         {
             path: '/signup',
-            component: () => import('../views/SignupPage.vue'),
+            component: () => import('../modules/intro/views/SignupPage.vue'),
+        },
+        {
+            path: '/main',
+            component: () => import('../modules/main/views/MainPage.vue'),
         },
 
         // fallback router 처리
         {
             path: '*',
-            component: () => import('../views/NotFoundPage.vue'),
+            component: () => import('../common/views/NotFoundPage.vue'),
         },
     ],
 });

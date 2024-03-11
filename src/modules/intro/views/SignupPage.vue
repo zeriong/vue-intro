@@ -6,7 +6,7 @@
 
 <script>
 
-import SignupForm from "@/components/forms/SignupForm.vue";
+import SignupForm from "@/modules/intro/components/SignupForm.vue";
 
 export default {
   components: {SignupForm}
