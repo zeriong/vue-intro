@@ -1,10 +1,12 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
-import router from "@/routes";
+import vuetify from './plugins/vuetify'
+import { loadFonts } from './plugins/webfontloader'
+import router from '@/routes'
 
-Vue.config.productionTip = false
+loadFonts()
 
-new Vue({
-    render: h => h(App),
-    router, // 라우터 추가
-}).$mount('#app')
+createApp(App)
+    .use(router)
+    .use(vuetify)
+    .mount('#app')

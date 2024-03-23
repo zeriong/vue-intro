@@ -1,18 +1,22 @@
 <template>
-  <div>
-    <AppHeader></AppHeader>
-    <router-view></router-view>
-  </div>
+  <v-app>
+    <AppHeader/>
+    <router-view/>
+  </v-app>
 </template>
 
 <script>
-import AppHeader from "@/modules/intro/components/AppHeader.vue";
+import AppHeader from "@/common/components/AppHeader.vue";
 
 export default {
+  name: 'App',
+
   components: {
     AppHeader,
-  }
-};
-</script>
+  },
 
-<style></style>
+  data: () => ({
+    //
+  }),
+}
+</script>
