@@ -33,6 +33,8 @@ export default {
 
       if (isExistUser.password === this.password) {
         this.resetForm();
+        const { username, password } = isExistUser
+        localStorage.setItem("loginUser", JSON.stringify({username, password}));
         alert(`${isExistUser.nickname}님 어서오세요!`);
         this.$router.push("/main");
       }

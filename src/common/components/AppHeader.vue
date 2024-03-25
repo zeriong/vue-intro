@@ -4,7 +4,7 @@
         헤더임
       </p>
       <div>
-        <v-btn>
+        <v-btn v-if="this.isLoggedIn">
           로그인
         </v-btn>
         <v-btn>
@@ -15,7 +15,17 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isLoggedIn: false,
+    }
+  },
+
+  created() {
+    if (localStorage.getItem('users')) console.log("야호")
+  }
+};
 </script>
 
 <style scoped>
