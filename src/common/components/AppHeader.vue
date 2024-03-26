@@ -4,12 +4,24 @@
         헤더임
       </p>
       <div>
-        <v-btn v-if="this.isLoggedIn">
-          로그인
-        </v-btn>
-        <v-btn>
-          로그인
-        </v-btn>
+        <div v-if="this.isLoggedIn" class="flex" @click="logout">
+          <v-btn >
+            로그아웃
+          </v-btn>
+          <v-btn >
+            마이페이지
+          </v-btn>
+        </div>
+
+        <div class="flex" v-else>
+          <v-btn >
+            로그인
+          </v-btn>
+          <v-btn >
+            회원가입
+          </v-btn>
+        </div>
+
       </div>
     </header>
 </template>
@@ -18,12 +30,19 @@
 export default {
   data() {
     return {
-      isLoggedIn: false,
+      isLoggedIn: localStorage.getItem("loginUser"),
     }
   },
-
-  created() {
-    if (localStorage.getItem('users')) console.log("야호")
+  methods: {
+    logout() {
+      localStorage.removeItem("loginUser");
+      console.log(localStorage.getItem("loginUser"))
+    }
+  },
+  watch: {
+    isLoggedIn: function(loggedInUser) {
+      this.isLoggedIn = loggedInUser;
+    }
   }
 };
 </script>

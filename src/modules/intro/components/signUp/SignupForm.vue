@@ -44,7 +44,6 @@ export default {
             nickname: this.nickname,
           });
           localStorage.setItem('users', JSON.stringify(users));
-          console.log("이건 뭘까나",localStorage.getItem('users'));
           this.resetForm();
           alert('회원가입이 되었습니다!');
           this.$router.push("/");
