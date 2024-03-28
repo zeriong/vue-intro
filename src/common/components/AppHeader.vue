@@ -12,9 +12,8 @@
             마이페이지
           </v-btn>
         </div>
-
-        <div class="flex" v-else>
-          <v-btn >
+        <div v-else class="flex" >
+          <v-btn @click="loginPage">
             로그인
           </v-btn>
           <v-btn >
@@ -30,20 +29,18 @@
 export default {
   data() {
     return {
-      isLoggedIn: localStorage.getItem("loginUser"),
+      isLoggedIn: this.$store.state.isLoggedIn,
     }
   },
   methods: {
     logout() {
       localStorage.removeItem("loginUser");
       console.log(localStorage.getItem("loginUser"))
-    }
+    },
+    loginPage() {
+      this.$router.push("/");
+    },
   },
-  watch: {
-    isLoggedIn: function(loggedInUser) {
-      this.isLoggedIn = loggedInUser;
-    }
-  }
 };
 </script>
 
