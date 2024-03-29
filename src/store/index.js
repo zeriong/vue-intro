@@ -16,6 +16,8 @@ const store = createStore({
             localStorage.removeItem("loginUser");
             state.userName = "";
             state.isLoggedIn = false;
+            alert("로그아웃 되었습니다.");
+            router.push("/");
         }
     },
     // mutations 를 통해 상태값을 변경할 때 비동기처리가 필요한 경우에 자주 사용
