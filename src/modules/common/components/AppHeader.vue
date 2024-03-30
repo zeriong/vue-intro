@@ -1,10 +1,11 @@
 <template>
-  <header class="header">
+  <header class="appHeader">
     <p>
       헤더임
     </p>
     <div>
-      <div v-if="isLoggedIn" class="flex" @click="logout">
+
+      <div v-if="isLoggedIn" class="buttons" @click="logout">
         <v-btn >
           로그아웃
         </v-btn>
@@ -12,7 +13,7 @@
           마이페이지
         </v-btn>
       </div>
-      <div v-else class="flex" >
+      <div v-else class="buttons" >
         <v-btn @click="loginPage">
           로그인
         </v-btn>
@@ -49,7 +50,7 @@ export default {
 </script>
 
 <style scoped>
-.header {
+.appHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,5 +58,12 @@ export default {
   height: 80px;
   border-bottom: 1px solid #cecece;
   padding: 0 30px;
+  position: fixed;
+  z-index: 100;
+  background-color: white;
+}
+.buttons {
+  display: flex;
+  gap: 16px;
 }
 </style>

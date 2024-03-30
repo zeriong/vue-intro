@@ -9,5 +9,7 @@
 </template>
 
 <style scoped>
+.mainContainer {
 
+}
 </style>

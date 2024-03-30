@@ -23,7 +23,7 @@ const routes = [
     // fallback router 처리
     {
         path: '/:pathMatch(.*)*',
-        component: () => import('../common/views/NotFoundPage.vue'),
+        component: () => import('@/modules/common/views/NotFoundPage.vue'),
     },
 ]
 
