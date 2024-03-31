@@ -5,8 +5,8 @@
     </p>
     <div>
 
-      <div v-if="isLoggedIn" class="buttons" @click="logout">
-        <v-btn >
+      <div v-if="isLoggedIn" class="buttons">
+        <v-btn @click="this.$store.commit('setLogout')">
           로그아웃
         </v-btn>
         <v-btn >
@@ -14,10 +14,10 @@
         </v-btn>
       </div>
       <div v-else class="buttons" >
-        <v-btn @click="loginPage">
+        <v-btn @click="this.$router.push('/login')">
           로그인
         </v-btn>
-        <v-btn >
+        <v-btn @click="this.$router.push('/signup')">
           회원가입
         </v-btn>
       </div>
@@ -33,14 +33,7 @@ export default {
       isLogin: false,
     }
   },
-  methods: {
-    logout() {
-      this.$store.commit("setLogout");
-    },
-    loginPage() {
-      this.$router.push("/");
-    },
-  },
+  methods: {},
   computed: {
     isLoggedIn() {
       return this.$store.state.isLoggedIn;

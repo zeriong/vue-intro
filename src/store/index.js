@@ -1,5 +1,6 @@
 import {createStore} from "vuex";
 import router from "@/routes";
+import routes from "@/routes";
 
 const store = createStore({
     state: {
@@ -17,7 +18,7 @@ const store = createStore({
             state.userName = "";
             state.isLoggedIn = false;
             alert("로그아웃 되었습니다.");
-            router.push("/");
+            router.push("/login");
         }
     },
     // mutations 를 통해 상태값을 변경할 때 비동기처리가 필요한 경우에 자주 사용
@@ -35,14 +36,14 @@ const store = createStore({
                 const { username, nickname } = isExistUser
                 localStorage.setItem("loginUser", JSON.stringify({username, nickname}));
                 alert(`${isExistUser.nickname}님 어서오세요!`);
-                router.push("/main");
+                routes.push("/main");
             }
             else alert("비밀번호가 일치하지 않습니다.");
         }
     },
     // 특정 스테이트를 가공해서 보여주고 싶은 경우 사용 or 기본 상태값을 보여주고 싶을때도 사용 가능
     getters: {
-        loginState: (state) => state.isLoggedIn,
+        // loginState: (state) => state.isLoggedIn,
     },
 })
 
