@@ -11,7 +11,7 @@ const routes = [
     {
         path: '/login',
         // 함수형태로 컴포넌트를 지정하여 코드스플리팅 사용
-        component: () => import('../modules/intro/views/IntroPage.vue'),
+        component: () => import('../modules/intro/views/LoginPage.vue'),
         meta: {
             needLogout: true,
         }

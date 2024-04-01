@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <SignInForm/>
-  </div>
+  <SignInForm/>
 </template>
 
 <script>

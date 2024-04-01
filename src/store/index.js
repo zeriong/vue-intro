@@ -32,7 +32,6 @@ const store = createStore({
 
             if (isExistUser.password === payload.password) {
                 commit("setLogin", payload.username);
-                payload.resetForm();
                 const { username, nickname } = isExistUser
                 localStorage.setItem("loginUser", JSON.stringify({username, nickname}));
                 alert(`${isExistUser.nickname}님 어서오세요!`);

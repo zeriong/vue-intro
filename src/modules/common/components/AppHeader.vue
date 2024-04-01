@@ -1,8 +1,8 @@
 <template>
   <header class="appHeader">
-    <p>
-      헤더임
-    </p>
+    <h2>
+      Z-Schedule
+    </h2>
     <div>
 
       <div v-if="isLoggedIn" class="buttons">

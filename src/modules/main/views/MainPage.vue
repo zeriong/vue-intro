@@ -1,5 +1,6 @@
 <template>
   <div>
+    <AppHeader/>
     <AppAsideBar/>
     <div class="appMain">
       메인
@@ -9,10 +10,12 @@
 
 <script>
 import AppAsideBar from "@/modules/common/components/AppAsideBar.vue";
+import AppHeader from "@/modules/common/components/AppHeader.vue";
 
 export default {
   name: "MainPage",
   components: {
+    AppHeader,
     AppAsideBar,
   },
   created() {
