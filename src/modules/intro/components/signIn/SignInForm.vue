@@ -15,16 +15,23 @@
           v-model="username"
       />
 
-      <v-text-field
-          label="password"
-          v-model="password"
-      />
+      <div>
+        <v-text-field
+            :type="isShowPassword ? 'text' : 'password'"
+            label="password"
+            v-model="password"
+        />
+        <v-checkbox
+            class="showPasswordCheckBox"
+            v-model="isShowPassword"
+            :label="isShowPassword ? '비밀번호 숨김' : '비밀번호 보기'"
+        />
+      </div>
 
       <div class="signInButtons">
         <v-btn class="loginButton" width="100%" height="54" type="submit">login</v-btn>
         <button class="signupButton" type="button" @click="this.$router.push('/signup')">SIGNUP</button>
       </div>
-
 
       <div>{{ logMessage }}</div>
     </form>
@@ -39,10 +46,11 @@ export default {
       username: '',
       password: '',
       logMessage: '',
+      isShowPassword: false,
       rules: [
           value => !!value || "아이디를 입력해주세요.",
           value => (value && value.length >= 3) || '최소 3자 이상 입력해주세요',
-      ]
+      ],
     }
   },
   methods: {
