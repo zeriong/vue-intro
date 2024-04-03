@@ -15,17 +15,17 @@
           v-model="username"
       />
 
-      <div>
+      <div class="passwordInputWrapper">
         <v-text-field
             :type="isShowPassword ? 'text' : 'password'"
             label="password"
             v-model="password"
+            class="passwordInput"
         />
-        <v-checkbox
-            class="showPasswordCheckBox"
-            v-model="isShowPassword"
-            :label="isShowPassword ? '비밀번호 숨김' : '비밀번호 보기'"
-        />
+        <div @click="isShowPassword = !isShowPassword">
+          <img v-if="isShowPassword" class="showPasswordIcon" :src="visibilityIcon" alt="비밀번호 보일 때 아이콘"/>
+          <img v-else class="showPasswordIcon" :src="visibilityOffIcon" alt="비밀번호 보이지 않을 때 아이콘"/>
+        </div>
       </div>
 
       <div class="signInButtons">
@@ -51,6 +51,8 @@ export default {
           value => !!value || "아이디를 입력해주세요.",
           value => (value && value.length >= 3) || '최소 3자 이상 입력해주세요',
       ],
+      visibilityIcon: require("@/assets/visibilityIcon.svg"),
+      visibilityOffIcon: require("@/assets/visibilityOffIcon.svg"),
     }
   },
   methods: {
@@ -111,5 +113,17 @@ export default {
 .signInButtons {
   position: relative;
   width: 100%;
+}
+.passwordInput .v-field__input {
+  padding-right: 48px;
+}
+.passwordInputWrapper {
+  position: relative;
+}
+.showPasswordIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
 }
 </style>
