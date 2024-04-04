@@ -1,22 +1,44 @@
 
 <template>
-  <div class="signInWrapper">
+  <div class="formWrapper">
     <!-- @submit 에 [.prevent] 를 추가하여 서브밋 새로고침을 막을 수 있다.(SPA 방식) -->
-    <form @submit.prevent="submitForm">
-      <div>
-        <label for="username">ID: </label>
-        <input id="username" type="text" v-model="username">
+    <form
+        class="form"
+        @submit.prevent="submitForm"
+    >
+
+      <h1 class="formTitle">
+        Z-Schedule
+      </h1>
+
+      <v-text-field
+          :rules="rules"
+          label="ID"
+          v-model="username"
+      />
+
+      <div class="passwordInputWrapper">
+        <v-text-field
+            :type="isShowPassword ? 'text' : 'password'"
+            label="password"
+            v-model="password"
+            class="passwordInput"
+        />
+        <div @click="isShowPassword = !isShowPassword">
+          <img v-if="isShowPassword" class="showPasswordIcon" :src="visibilityIcon" alt="비밀번호 보일 때 아이콘"/>
+          <img v-else class="showPasswordIcon" :src="visibilityOffIcon" alt="비밀번호 보이지 않을 때 아이콘"/>
+        </div>
       </div>
-      <div>
-        <label for="password">PW: </label>
-        <input id="password" type="password" v-model="password">
+
+      <v-text-field
+          label="Nick Name"
+          v-model="nickname"
+      />
+
+      <div class="formInButtons">
+        <v-btn class="submitButton" width="100%" height="54" type="submit">SIGNUP</v-btn>
+        <button class="changeSignModeButton" type="button" @click="this.$router.push('/login')">LOGIN</button>
       </div>
-      <div>
-        <label for="nickname">Nick Name: </label>
-        <input id="nickname" type="text" v-model="nickname">
-      </div>
-      <button type="submit">Signup</button>
-      <div>{{ logMessage }}</div>
     </form>
   </div>
 </template>
@@ -28,8 +50,15 @@ export default {
     return {
       username: '',
       password: '',
+      isShowPassword: false,
       nickname: '',
       logMessage: '',
+      rules: [
+        value => !!value || "아이디를 입력해주세요.",
+        value => (value && value.length >= 3) || '최소 3자 이상 입력해주세요',
+      ],
+      visibilityIcon: require("@/assets/visibilityIcon.svg"),
+      visibilityOffIcon: require("@/assets/visibilityOffIcon.svg"),
     }
   },
   methods: {
@@ -68,5 +97,5 @@ export default {
 </script>
 
 <style>
-
+@import "../style.css";
 </style>
